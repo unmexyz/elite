@@ -1689,5 +1689,131 @@
                                 <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-royal-blue focus:border-transparent" placeholder="Tell us about your project or questions..."></textarea>
                             </div>
 
-                            <button type="
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'963a0defd2e684ef',t:'MTc1MzI2MTkyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+                            <button type="submit" class="w-full bg-royal-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Quick Contact Cards -->
+                <div class="mt-16 grid md:grid-cols-3 gap-8">
+                    <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                        <div class="w-16 h-16 bg-royal-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl">💼</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Schedule Consultation</h3>
+                        <p class="text-gray-600 mb-4">Book a free 30-minute consultation to discuss your business needs.</p>
+                        <button onclick="scheduleConsultation()" class="bg-royal-blue text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">Schedule Now</button>
+                    </div>
+                    <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                        <div class="w-16 h-16 bg-forest-green rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl">📞</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Request Callback</h3>
+                        <p class="text-gray-600 mb-4">Have us call you at your preferred time to discuss your project.</p>
+                        <button onclick="requestCallback()" class="bg-forest-green text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-300">Request Call</button>
+                    </div>
+                    <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                        <div class="w-16 h-16 bg-golden-yellow rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl">📧</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Quick Question</h3>
+                        <p class="text-gray-600 mb-4">Send us a quick message and we'll respond within 24 hours.</p>
+                        <button onclick="quickEmail()" class="bg-golden-yellow text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition duration-300">Send Email</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Contact form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.querySelector('form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(this);
+                    const firstName = this.querySelector('input[placeholder="John"]').value;
+                    const lastName = this.querySelector('input[placeholder="Doe"]').value;
+                    const email = this.querySelector('input[type="email"]').value;
+                    const company = this.querySelector('input[placeholder="Your Company"]').value;
+                    const service = this.querySelector('select').value;
+                    const message = this.querySelector('textarea').value;
+                    
+                    // Create email content
+                    const subject = `New Contact Form Submission from ${firstName} ${lastName}`;
+                    const body = `
+Name: ${firstName} ${lastName}
+Email: ${email}
+Company: ${company}
+Service Interest: ${service}
+Message: ${message}
+                    `;
+                    
+                    // Open email client
+                    window.location.href = `mailto:waterbottel1951999@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    
+                    // Show success message
+                    alert('Thank you for your message! Your email client will open to send the message.');
+                });
+            }
+        });
+
+        // Schedule consultation function
+        function scheduleConsultation() {
+            const subject = 'Schedule Business Consultation Request';
+            const body = `Hello,
+
+I would like to schedule a free 30-minute consultation to discuss my business needs.
+
+Please let me know your available times and I'll confirm a suitable slot.
+
+Best regards,
+[Your Name]
+[Your Company]
+[Your Phone Number]`;
+            
+            window.location.href = `mailto:waterbottel1951999@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        // Request callback function
+        function requestCallback() {
+            const subject = 'Callback Request';
+            const body = `Hello,
+
+I would like to request a callback to discuss my project requirements.
+
+My preferred callback times:
+- Day: [Please specify]
+- Time: [Please specify]
+- Phone Number: [Your phone number]
+
+Project Details:
+[Brief description of your project or needs]
+
+Best regards,
+[Your Name]
+[Your Company]`;
+            
+            window.location.href = `mailto:waterbottel1951999@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        // Quick email function
+        function quickEmail() {
+            const subject = 'Quick Question';
+            const body = `Hello,
+
+I have a quick question about your services:
+
+[Your question here]
+
+Best regards,
+[Your Name]
+[Your Company]
+[Your Contact Information]`;
+            
+            window.location.href = `mailto:waterbottel1951999@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'963a1827f49d3c04',t:'MTc1MzI2MjM0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
