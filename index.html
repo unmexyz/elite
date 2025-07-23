@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Consulting - Strategic Business Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'royal-blue': '#1e40af',
+                        'forest-green': '#059669',
+                        'golden-yellow': '#f59e0b'
+                    }
+                }
+            }
+        }
+
+        // Navigation functionality
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+            
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+
+        // Initialize page on load
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+        });
+    </script>
+    <style>
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #1e40af, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .group:hover .group-hover\:block {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-royal-blue to-forest-green rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">Elite Consulting</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <button onclick="showPage('home')" class="nav-link text-gray-700 hover:text-royal-blue px-3 py-2 rounded-md font-medium">Home</button>
+                    <button onclick="showPage('about')" class="nav-link text-gray-700 hover:text-royal-blue px-3 py-2 rounded-md font-medium">About</button>
+                    <button onclick="showPage('services')" class="nav-link text-gray-700 hover:text-royal-blue px-3 py-2 rounded-md font-medium">Services</button>
+                    <button onclick="showPage('team')" class="nav-link text-gray-700 hover:text-royal-blue px-3 py-2 rounded-md font-medium">Team</button>
+                    <button onclick="showPage('portfolio')" class="nav-link text-gray-700 hover:text-royal-blue px-3 py-2 rounded-md font-medium">Portfolio</button>
+                    <button onclick="showPage('testimonials')" class="nav-link text-gray-700 hover:text-royal-blue px-3 py-2 rounded-md font-medium">Testimonials</button>
+                    <button onclick="showPage('blog')" class="nav-link text-gray-700 hover:text-royal-blue px-3 py-2 rounded-md font-medium">Blog</button>
+                    <div class="relative group">
+                        <button class="nav-link text-gray-700 hover:text-royal-blue px-3 py-2 rounded-md font-medium">Investors ▼</button>
+                        <div class="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 w-48 hidden group-hover:block z-50">
+                            <button onclick="showPage('investors-overview')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Overview</button>
+                            <button onclick="showPage('financial-services')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Financial Services</button>
+                            <button onclick="showPage('dividend-info')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dividend Information</button>
+                            <button onclick="showPage('financial-reports')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Financial Reports</button>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <button class="nav-link text-gray-700 hover:text-royal-blue px-3 py-2 rounded-md font-medium">Sustainability ▼</button>
+                        <div class="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 w-48 hidden group-hover:block z-50">
+                            <button onclick="showPage('sustainability-overview')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Overview</button>
+                            <button onclick="showPage('sustainability-philosophy')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Philosophy</button>
+                            <button onclick="showPage('sustainability-reports')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sustainability Reports</button>
+                        </div>
+                    </div>
+                    <button onclick="showPage('contact')" class="nav-link bg-royal-blue text-white px-4 py-2 rounded-md font-medium hover:bg-blue-600">Contact</button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-royal-blue">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <button onclick="showPage('home')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-royal-blue">Home</button>
+                <button onclick="showPage('about')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-royal-blue">About</button>
+                <button onclick="showPage('services')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-royal-blue">Services</button>
+                <button onclick="showPage('team')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-royal-blue">Team</button>
+                <button onclick="showPage('portfolio')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-royal-blue">Portfolio</button>
+                <button onclick="showPage('testimonials')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-royal-blue">Testimonials</button>
+                <button onclick="showPage('blog')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-royal-blue">Blog</button>
+                <button onclick="showPage('investors-overview')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-royal-blue">Investors</button>
+                <button onclick="showPage('sustainability-overview')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-royal-blue">Sustainability</button>
+                <button onclick="showPage('contact')" class="block w-full text-left px-3 py-2 bg-royal-blue text-white rounded">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero-gradient text-white pt-24 pb-16">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <div class="animate-fade-in">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">Transform Your Business</h1>
+                    <p class="text-xl md:text-2xl mb-8 text-blue-100">Strategic consulting solutions that drive growth and innovation</p>
+                    <div class="space-x-4">
+                        <button onclick="showPage('services')" class="bg-white text-royal-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">Our Services</button>
+                        <button onclick="showPage('contact')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-royal-blue transition duration-300">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Why Choose Elite Consulting?</h2>
+                    <p class="text-xl text-gray-600">We deliver results that matter</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center card-hover bg-gray-50 p-8 rounded-lg">
+                        <div class="w-16 h-16 bg-royal-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl">🎯</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Strategic Focus</h3>
+                        <p class="text-gray-600">Data-driven strategies tailored to your unique business challenges and opportunities.</p>
+                    </div>
+                    <div class="text-center card-hover bg-gray-50 p-8 rounded-lg">
+                        <div class="w-16 h-16 bg-forest-green rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl">⚡</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Rapid Results</h3>
+                        <p class="text-gray-600">Fast implementation with measurable outcomes that impact your bottom line.</p>
+                    </div>
+                    <div class="text-center card-hover bg-gray-50 p-8 rounded-lg">
+                        <div class="w-16 h-16 bg-golden-yellow rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl">🏆</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Proven Excellence</h3>
+                        <p class="text-gray-600">15+ years of experience helping businesses achieve sustainable growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16 bg-gray-100">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div class="card-hover">
+                        <div class="text-4xl font-bold text-royal-blue mb-2">500+</div>
+                        <p class="text-gray-600">Projects Completed</p>
+                    </div>
+                    <div class="card-hover">
+                        <div class="text-4xl font-bold text-forest-green mb-2">98%</div>
+                        <p class="text-gray-600">Client Satisfaction</p>
+                    </div>
+                    <div class="card-hover">
+                        <div class="text-4xl font-bold text-golden-yellow mb-2">15+</div>
+                        <p class="text-gray-600">Years Experience</p>
+                    </div>
+                    <div class="card-hover">
+                        <div class="text-4xl font-bold text-royal-blue mb-2">50+</div>
+                        <p class="text-gray-600">Expert Consultants</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 bg-royal-blue text-white">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
+                <p class="text-xl mb-8 text-blue-100">Let's discuss how we can help you achieve your goals</p>
+                <button onclick="showPage('contact')" class="bg-white text-royal-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">Schedule a Consultation</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section class="pt-24 pb-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">About Elite Consulting</h1>
+                    <p class="text-xl text-gray-600">Empowering businesses to reach their full potential</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Story</h2>
+                        <p class="text-gray-600 mb-4">Founded in 2008, Elite Consulting has been at the forefront of business transformation, helping organizations navigate complex challenges and seize new opportunities.</p>
+                        <p class="text-gray-600 mb-4">Our team of seasoned professionals brings together decades of experience across industries, delivering innovative solutions that drive sustainable growth.</p>
+                        <p class="text-gray-600">We believe that every business has untapped potential, and our mission is to unlock that potential through strategic thinking, operational excellence, and transformational leadership.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-royal-blue to-forest-green p-8 rounded-lg text-white">
+                        <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+                        <p class="mb-4">To be the trusted partner that empowers businesses to achieve extraordinary results through strategic innovation and operational excellence.</p>
+                        <h3 class="text-2xl font-bold mb-4">Our Vision</h3>
+                        <p>A world where every business realizes its full potential and contributes to sustainable economic growth.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-royal-blue rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-xl">💡</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Innovation</h3>
+                        <p class="text-gray-600">Cutting-edge solutions that push boundaries and create competitive advantages.</p>
+                    </div>
+                    <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-forest-green rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-xl">🤝</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Partnership</h3>
+                        <p class="text-gray-600">Building long-term relationships based on trust, transparency, and mutual success.</p>
+                    </div>
+                    <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-golden-yellow rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-xl">🎯</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Results</h3>
+                        <p class="text-gray-600">Measurable outcomes that deliver real value and sustainable growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page">
+        <section class="pt-24 pb-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Our Services</h1>
+                    <p class="text-xl text-gray-600">Comprehensive solutions for your business challenges</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-royal-blue rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📊</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Strategic Planning</h3>
+                        <p class="text-gray-600 mb-4">Develop comprehensive strategies that align with your vision and drive sustainable growth.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Market Analysis</li>
+                            <li>• Competitive Intelligence</li>
+                            <li>• Growth Strategy</li>
+                            <li>• Risk Assessment</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-forest-green rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">⚙️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Operations Optimization</h3>
+                        <p class="text-gray-600 mb-4">Streamline processes and improve efficiency to maximize operational performance.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Process Improvement</li>
+                            <li>• Supply Chain Optimization</li>
+                            <li>• Quality Management</li>
+                            <li>• Cost Reduction</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-golden-yellow rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🔄</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Change Management</h3>
+                        <p class="text-gray-600 mb-4">Navigate organizational transformation with minimal disruption and maximum adoption.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Change Strategy</li>
+                            <li>• Stakeholder Engagement</li>
+                            <li>• Training & Development</li>
+                            <li>• Communication Planning</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-royal-blue rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">💼</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Financial Advisory</h3>
+                        <p class="text-gray-600 mb-4">Expert financial guidance to optimize capital structure and improve profitability.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Financial Planning</li>
+                            <li>• Investment Strategy</li>
+                            <li>• M&A Advisory</li>
+                            <li>• Performance Analytics</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-forest-green rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🚀</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Digital Transformation</h3>
+                        <p class="text-gray-600 mb-4">Leverage technology to modernize operations and create competitive advantages.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Technology Strategy</li>
+                            <li>• Digital Innovation</li>
+                            <li>• System Integration</li>
+                            <li>• Data Analytics</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-golden-yellow rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">👥</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Leadership Development</h3>
+                        <p class="text-gray-600 mb-4">Build strong leadership capabilities to drive organizational success.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Executive Coaching</li>
+                            <li>• Leadership Assessment</li>
+                            <li>• Succession Planning</li>
+                            <li>• Team Development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Team Page -->
+    <div id="team" class="page">
+        <section class="pt-24 pb-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Our Team</h1>
+                    <p class="text-xl text-gray-600">Meet the experts driving your success</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 text-center shadow-sm">
+                        <div class="w-24 h-24 bg-gradient-to-r from-royal-blue to-forest-green rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl font-bold">JS</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">John Smith</h3>
+                        <p class="text-royal-blue font-medium mb-3">CEO & Founder</p>
+                        <p class="text-gray-600 text-sm mb-4">20+ years in strategic consulting with expertise in digital transformation and organizational change.</p>
+                        <div class="flex justify-center space-x-3">
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">📧</span>
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">💼</span>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 text-center shadow-sm">
+                        <div class="w-24 h-24 bg-gradient-to-r from-forest-green to-golden-yellow rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl font-bold">SJ</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Sarah Johnson</h3>
+                        <p class="text-forest-green font-medium mb-3">VP of Operations</p>
+                        <p class="text-gray-600 text-sm mb-4">Expert in process optimization and operational excellence with a track record of delivering results.</p>
+                        <div class="flex justify-center space-x-3">
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">📧</span>
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">💼</span>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 text-center shadow-sm">
+                        <div class="w-24 h-24 bg-gradient-to-r from-golden-yellow to-royal-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl font-bold">MD</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Michael Davis</h3>
+                        <p class="text-golden-yellow font-medium mb-3">Senior Partner</p>
+                        <p class="text-gray-600 text-sm mb-4">Financial advisory specialist with extensive M&A experience and strategic planning expertise.</p>
+                        <div class="flex justify-center space-x-3">
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">📧</span>
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">💼</span>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 text-center shadow-sm">
+                        <div class="w-24 h-24 bg-gradient-to-r from-royal-blue to-forest-green rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl font-bold">EW</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Emily Wilson</h3>
+                        <p class="text-royal-blue font-medium mb-3">Technology Director</p>
+                        <p class="text-gray-600 text-sm mb-4">Digital transformation leader with expertise in emerging technologies and innovation strategy.</p>
+                        <div class="flex justify-center space-x-3">
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">📧</span>
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">💼</span>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 text-center shadow-sm">
+                        <div class="w-24 h-24 bg-gradient-to-r from-forest-green to-golden-yellow rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl font-bold">RB</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Robert Brown</h3>
+                        <p class="text-forest-green font-medium mb-3">Change Management Lead</p>
+                        <p class="text-gray-600 text-sm mb-4">Organizational development expert specializing in large-scale transformation initiatives.</p>
+                        <div class="flex justify-center space-x-3">
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">📧</span>
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">💼</span>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 text-center shadow-sm">
+                        <div class="w-24 h-24 bg-gradient-to-r from-golden-yellow to-royal-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl font-bold">LG</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Lisa Garcia</h3>
+                        <p class="text-golden-yellow font-medium mb-3">Strategy Consultant</p>
+                        <p class="text-gray-600 text-sm mb-4">Market research and competitive analysis expert with a passion for data-driven insights.</p>
+                        <div class="flex justify-center space-x-3">
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">📧</span>
+                            <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">💼</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Portfolio Page -->
+    <div id="portfolio" class="page">
+        <section class="pt-24 pb-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Our Portfolio</h1>
+                    <p class="text-xl text-gray-600">Success stories that speak for themselves</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-royal-blue to-forest-green flex items-center justify-center">
+                            <span class="text-white text-4xl">🏢</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Global Manufacturing Corp</h3>
+                            <p class="text-gray-600 text-sm mb-4">Operational transformation resulting in 35% cost reduction and 50% improvement in delivery times.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-forest-green font-semibold">+35% Efficiency</span>
+                                <span class="text-sm text-gray-500">Manufacturing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-forest-green to-golden-yellow flex items-center justify-center">
+                            <span class="text-white text-4xl">🏦</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Regional Bank Network</h3>
+                            <p class="text-gray-600 text-sm mb-4">Digital transformation initiative that modernized operations and improved customer experience.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-royal-blue font-semibold">+60% Digital Adoption</span>
+                                <span class="text-sm text-gray-500">Financial Services</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-golden-yellow to-royal-blue flex items-center justify-center">
+                            <span class="text-white text-4xl">🏥</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Healthcare System</h3>
+                            <p class="text-gray-600 text-sm mb-4">Process optimization that reduced patient wait times by 40% while improving care quality.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-forest-green font-semibold">-40% Wait Times</span>
+                                <span class="text-sm text-gray-500">Healthcare</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-royal-blue to-forest-green flex items-center justify-center">
+                            <span class="text-white text-4xl">🛒</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">E-commerce Platform</h3>
+                            <p class="text-gray-600 text-sm mb-4">Strategic repositioning and technology upgrade leading to 200% growth in online sales.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-golden-yellow font-semibold">+200% Sales Growth</span>
+                                <span class="text-sm text-gray-500">Retail</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-forest-green to-golden-yellow flex items-center justify-center">
+                            <span class="text-white text-4xl">⚡</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Energy Solutions Inc</h3>
+                            <p class="text-gray-600 text-sm mb-4">Sustainability initiative that reduced carbon footprint by 45% while maintaining profitability.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-forest-green font-semibold">-45% Carbon Footprint</span>
+                                <span class="text-sm text-gray-500">Energy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-golden-yellow to-royal-blue flex items-center justify-center">
+                            <span class="text-white text-4xl">🎓</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Education Network</h3>
+                            <p class="text-gray-600 text-sm mb-4">Organizational restructuring that improved student outcomes and operational efficiency.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-royal-blue font-semibold">+25% Student Success</span>
+                                <span class="text-sm text-gray-500">Education</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Testimonials Page -->
+    <div id="testimonials" class="page">
+        <section class="pt-24 pb-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Client Testimonials</h1>
+                    <p class="text-xl text-gray-600">What our clients say about working with us</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card-hover bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-royal-blue rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">JD</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">James Davidson</h4>
+                                <p class="text-sm text-gray-600">CEO, TechCorp Industries</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"Elite Consulting transformed our operations completely. Their strategic approach and attention to detail resulted in a 40% increase in efficiency within just 6 months."</p>
+                        <div class="flex text-golden-yellow">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-forest-green rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">MR</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Maria Rodriguez</h4>
+                                <p class="text-sm text-gray-600">VP Operations, Global Logistics</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"The team's expertise in change management was invaluable during our digital transformation. They made a complex process seamless and engaging for our entire organization."</p>
+                        <div class="flex text-golden-yellow">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-golden-yellow rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">RT</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Robert Thompson</h4>
+                                <p class="text-sm text-gray-600">CFO, Financial Partners LLC</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"Outstanding financial advisory services. Their insights helped us optimize our capital structure and improve our ROI by 25%. Highly recommended!"</p>
+                        <div class="flex text-golden-yellow">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-royal-blue rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">AK</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Amanda Kim</h4>
+                                <p class="text-sm text-gray-600">Director, Healthcare Solutions</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"Elite Consulting's process optimization strategies revolutionized our patient care delivery. We've seen significant improvements in both efficiency and patient satisfaction."</p>
+                        <div class="flex text-golden-yellow">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-forest-green rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">DL</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">David Lee</h4>
+                                <p class="text-sm text-gray-600">President, Manufacturing Plus</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"Their strategic planning expertise helped us navigate a challenging market transition. The results exceeded our expectations and positioned us for long-term growth."</p>
+                        <div class="flex text-golden-yellow">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-golden-yellow rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">SC</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Susan Chen</h4>
+                                <p class="text-sm text-gray-600">COO, Retail Innovations</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"Working with Elite Consulting was a game-changer for our retail operations. Their innovative solutions and hands-on approach delivered measurable results quickly."</p>
+                        <div class="flex text-golden-yellow">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Blog Page -->
+    <div id="blog" class="page">
+        <section class="pt-24 pb-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Insights & Perspectives</h1>
+                    <p class="text-xl text-gray-600">Latest thoughts on business strategy and innovation</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-royal-blue to-forest-green flex items-center justify-center">
+                            <span class="text-white text-4xl">📈</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 mb-2">March 15, 2024</div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">The Future of Digital Transformation</h3>
+                            <p class="text-gray-600 text-sm mb-4">Exploring emerging technologies and their impact on business operations in the next decade.</p>
+                            <button class="text-royal-blue font-semibold hover:underline">Read More →</button>
+                        </div>
+                    </article>
+
+                    <article class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-forest-green to-golden-yellow flex items-center justify-center">
+                            <span class="text-white text-4xl">🎯</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 mb-2">March 10, 2024</div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">Strategic Planning in Uncertain Times</h3>
+                            <p class="text-gray-600 text-sm mb-4">How to develop resilient strategies that adapt to changing market conditions and unexpected challenges.</p>
+                            <button class="text-forest-green font-semibold hover:underline">Read More →</button>
+                        </div>
+                    </article>
+
+                    <article class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-golden-yellow to-royal-blue flex items-center justify-center">
+                            <span class="text-white text-4xl">⚡</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 mb-2">March 5, 2024</div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">Operational Excellence Through Automation</h3>
+                            <p class="text-gray-600 text-sm mb-4">Best practices for implementing automation solutions that enhance efficiency without sacrificing quality.</p>
+                            <button class="text-golden-yellow font-semibold hover:underline">Read More →</button>
+                        </div>
+                    </article>
+
+                    <article class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-royal-blue to-forest-green flex items-center justify-center">
+                            <span class="text-white text-4xl">🤝</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 mb-2">February 28, 2024</div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">Leading Change: A Human-Centered Approach</h3>
+                            <p class="text-gray-600 text-sm mb-4">Why successful organizational transformation requires focusing on people, not just processes and technology.</p>
+                            <button class="text-royal-blue font-semibold hover:underline">Read More →</button>
+                        </div>
+                    </article>
+
+                    <article class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-forest-green to-golden-yellow flex items-center justify-center">
+                            <span class="text-white text-4xl">💡</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 mb-2">February 22, 2024</div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">Innovation Culture: Building Tomorrow's Organization</h3>
+                            <p class="text-gray-600 text-sm mb-4">Creating an environment where innovation thrives and drives sustainable competitive advantage.</p>
+                            <button class="text-forest-green font-semibold hover:underline">Read More →</button>
+                        </div>
+                    </article>
+
+                    <article class="card-hover bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                        <div class="h-48 bg-gradient-to-r from-golden-yellow to-royal-blue flex items-center justify-center">
+                            <span class="text-white text-4xl">📊</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 mb-2">February 15, 2024</div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">Data-Driven Decision Making</h3>
+                            <p class="text-gray-600 text-sm mb-4">Leveraging analytics and business intelligence to make informed strategic decisions that drive growth.</p>
+                            <button class="text-golden-yellow font-semibold hover:underline">Read More →</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Investors Overview Page -->
+    <div id="investors-overview" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Investor Relations</h1>
+                    <p class="text-xl text-gray-600">Transparent communication with our stakeholders and investors</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                        <div class="text-3xl font-bold text-royal-blue mb-2">$2.4B</div>
+                        <p class="text-gray-600">Market Capitalization</p>
+                    </div>
+                    <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                        <div class="text-3xl font-bold text-forest-green mb-2">18.5%</div>
+                        <p class="text-gray-600">Annual Revenue Growth</p>
+                    </div>
+                    <div class="text-center card-hover bg-gray-50 p-6 rounded-lg">
+                        <div class="text-3xl font-bold text-golden-yellow mb-2">$4.25</div>
+                        <p class="text-gray-600">Dividend Per Share</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Investment Highlights</h2>
+                        <ul class="space-y-4">
+                            <li class="flex items-start space-x-3">
+                                <span class="w-6 h-6 bg-royal-blue rounded-full flex items-center justify-center text-white text-sm">✓</span>
+                                <span class="text-gray-600">Consistent revenue growth of 15%+ annually for 5 consecutive years</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="w-6 h-6 bg-forest-green rounded-full flex items-center justify-center text-white text-sm">✓</span>
+                                <span class="text-gray-600">Strong market position in strategic consulting services</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="w-6 h-6 bg-golden-yellow rounded-full flex items-center justify-center text-white text-sm">✓</span>
+                                <span class="text-gray-600">Diversified client portfolio across multiple industries</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="w-6 h-6 bg-royal-blue rounded-full flex items-center justify-center text-white text-sm">✓</span>
+                                <span class="text-gray-600">Experienced management team with proven track record</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Quick Links</h2>
+                        <div class="space-y-3">
+                            <button onclick="showPage('financial-reports')" class="w-full text-left p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition duration-200">
+                                <div class="font-semibold text-gray-800">Financial Reports</div>
+                                <div class="text-sm text-gray-600">Annual and quarterly financial statements</div>
+                            </button>
+                            <button onclick="showPage('dividend-info')" class="w-full text-left p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition duration-200">
+                                <div class="font-semibold text-gray-800">Dividend Information</div>
+                                <div class="text-sm text-gray-600">Dividend history and payment schedule</div>
+                            </button>
+                            <button onclick="showPage('financial-services')" class="w-full text-left p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition duration-200">
+                                <div class="font-semibold text-gray-800">Financial Services</div>
+                                <div class="text-sm text-gray-600">Investment banking and advisory services</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Financial Services Page -->
+    <div id="financial-services" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Financial Services</h1>
+                    <p class="text-xl text-gray-600">Comprehensive financial solutions for institutional and individual investors</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-royal-blue rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🏦</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Investment Banking</h3>
+                        <p class="text-gray-600 mb-4">Strategic advisory services for mergers, acquisitions, and capital raising activities.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• M&A Advisory</li>
+                            <li>• Capital Markets</li>
+                            <li>• Debt Financing</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-forest-green rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📊</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Asset Management</h3>
+                        <p class="text-gray-600 mb-4">Professional portfolio management services for institutional and high-net-worth clients.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Portfolio Management</li>
+                            <li>• Risk Assessment</li>
+                            <li>• Performance Analytics</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-hover bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-golden-yellow rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">💼</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Corporate Finance</h3>
+                        <p class="text-gray-600 mb-4">Strategic financial planning and capital structure optimization for corporations.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Financial Planning</li>
+                            <li>• Capital Structure</li>
+                            <li>• Valuation Services</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Service Performance Metrics</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">Service Area</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">Assets Under Management</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">Annual Return</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">Client Satisfaction</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 text-gray-600">Investment Banking</td>
+                                    <td class="py-3 px-4 text-gray-600">$1.2B</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">12.4%</td>
+                                    <td class="py-3 px-4 text-gray-600">96%</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 text-gray-600">Asset Management</td>
+                                    <td class="py-3 px-4 text-gray-600">$850M</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">14.7%</td>
+                                    <td class="py-3 px-4 text-gray-600">98%</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 text-gray-600">Corporate Finance</td>
+                                    <td class="py-3 px-4 text-gray-600">$650M</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">11.8%</td>
+                                    <td class="py-3 px-4 text-gray-600">94%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Dividend Information Page -->
+    <div id="dividend-info" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Dividend Information</h1>
+                    <p class="text-xl text-gray-600">Consistent dividend payments reflecting our commitment to shareholders</p>
+                </div>
+
+                <div class="grid md:grid-cols-4 gap-6 mb-12">
+                    <div class="text-center card-hover bg-royal-blue text-white p-6 rounded-lg">
+                        <div class="text-2xl font-bold mb-2">$4.25</div>
+                        <p class="text-sm">Current Annual Dividend</p>
+                    </div>
+                    <div class="text-center card-hover bg-forest-green text-white p-6 rounded-lg">
+                        <div class="text-2xl font-bold mb-2">2.8%</div>
+                        <p class="text-sm">Dividend Yield</p>
+                    </div>
+                    <div class="text-center card-hover bg-golden-yellow text-white p-6 rounded-lg">
+                        <div class="text-2xl font-bold mb-2">15</div>
+                        <p class="text-sm">Years of Growth</p>
+                    </div>
+                    <div class="text-center card-hover bg-gray-600 text-white p-6 rounded-lg">
+                        <div class="text-2xl font-bold mb-2">45%</div>
+                        <p class="text-sm">Payout Ratio</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Dividend History</h2>
+                        <div class="overflow-x-auto">
+                            <table class="w-full bg-white border border-gray-200 rounded-lg">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="text-left py-3 px-4 font-semibold text-gray-800">Year</th>
+                                        <th class="text-left py-3 px-4 font-semibold text-gray-800">Dividend Per Share</th>
+                                        <th class="text-left py-3 px-4 font-semibold text-gray-800">Growth Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-3 px-4 text-gray-600">2024</td>
+                                        <td class="py-3 px-4 text-gray-600">$4.25</td>
+                                        <td class="py-3 px-4 text-forest-green">+6.3%</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-3 px-4 text-gray-600">2023</td>
+                                        <td class="py-3 px-4 text-gray-600">$4.00</td>
+                                        <td class="py-3 px-4 text-forest-green">+5.3%</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-3 px-4 text-gray-600">2022</td>
+                                        <td class="py-3 px-4 text-gray-600">$3.80</td>
+                                        <td class="py-3 px-4 text-forest-green">+5.6%</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-3 px-4 text-gray-600">2021</td>
+                                        <td class="py-3 px-4 text-gray-600">$3.60</td>
+                                        <td class="py-3 px-4 text-forest-green">+7.1%</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-3 px-4 text-gray-600">2020</td>
+                                        <td class="py-3 px-4 text-gray-600">$3.36</td>
+                                        <td class="py-3 px-4 text-forest-green">+4.0%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">2024 Payment Schedule</h2>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-semibold text-gray-800">Q1 2024</div>
+                                        <div class="text-sm text-gray-600">Ex-Dividend: Mar 15, 2024</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-semibold text-gray-800">$1.06</div>
+                                        <div class="text-sm text-forest-green">Paid</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-semibold text-gray-800">Q2 2024</div>
+                                        <div class="text-sm text-gray-600">Ex-Dividend: Jun 15, 2024</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-semibold text-gray-800">$1.06</div>
+                                        <div class="text-sm text-forest-green">Paid</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-semibold text-gray-800">Q3 2024</div>
+                                        <div class="text-sm text-gray-600">Ex-Dividend: Sep 15, 2024</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-semibold text-gray-800">$1.06</div>
+                                        <div class="text-sm text-forest-green">Paid</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-royal-blue p-4 rounded-lg text-white">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-semibold">Q4 2024</div>
+                                        <div class="text-sm opacity-90">Ex-Dividend: Dec 15, 2024</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-semibold">$1.07</div>
+                                        <div class="text-sm opacity-90">Upcoming</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Financial Reports Page -->
+    <div id="financial-reports" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Financial Reports</h1>
+                    <p class="text-xl text-gray-600">Comprehensive financial data and regulatory filings</p>
+                </div>
+
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Key Financial Metrics</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full bg-white border border-gray-200 rounded-lg">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">Metric</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">2024 Q3</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">2024 Q2</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">2023 Q3</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">YoY Change</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium text-gray-800">Revenue ($ millions)</td>
+                                    <td class="py-3 px-4 text-gray-600">$485.2</td>
+                                    <td class="py-3 px-4 text-gray-600">$462.8</td>
+                                    <td class="py-3 px-4 text-gray-600">$409.6</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">+18.5%</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium text-gray-800">Net Income ($ millions)</td>
+                                    <td class="py-3 px-4 text-gray-600">$72.8</td>
+                                    <td class="py-3 px-4 text-gray-600">$69.4</td>
+                                    <td class="py-3 px-4 text-gray-600">$61.4</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">+18.6%</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium text-gray-800">Earnings Per Share</td>
+                                    <td class="py-3 px-4 text-gray-600">$2.91</td>
+                                    <td class="py-3 px-4 text-gray-600">$2.78</td>
+                                    <td class="py-3 px-4 text-gray-600">$2.46</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">+18.3%</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium text-gray-800">Operating Margin</td>
+                                    <td class="py-3 px-4 text-gray-600">18.2%</td>
+                                    <td class="py-3 px-4 text-gray-600">17.8%</td>
+                                    <td class="py-3 px-4 text-gray-600">17.1%</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">+110 bps</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium text-gray-800">Return on Equity</td>
+                                    <td class="py-3 px-4 text-gray-600">16.4%</td>
+                                    <td class="py-3 px-4 text-gray-600">15.9%</td>
+                                    <td class="py-3 px-4 text-gray-600">15.2%</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">+120 bps</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Annual Reports</h2>
+                        <div class="space-y-4">
+                            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-semibold text-gray-800">2023 Annual Report</div>
+                                        <div class="text-sm text-gray-600">Published: March 15, 2024</div>
+                                    </div>
+                                    <button class="bg-royal-blue text-white px-4 py-2 rounded text-sm hover:bg-blue-600">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-semibold text-gray-800">2022 Annual Report</div>
+                                        <div class="text-sm text-gray-600">Published: March 20, 2023</div>
+                                    </div>
+                                    <button class="bg-royal-blue text-white px-4 py-2 rounded text-sm hover:bg-blue-600">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-semibold text-gray-800">2021 Annual Report</div>
+                                        <div class="text-sm text-gray-600">Published: March 18, 2022</div>
+                                    </div>
+                                    <button class="bg-royal-blue text-white px-4 py-2 rounded text-sm hover:bg-blue-600">Download PDF</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Quarterly Reports</h2>
+                        <div class="space-y-4">
+                            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-semibold text-gray-800">Q3 2024 Earnings</div>
+                                        <div class="text-sm text-gray-600">Published: October 25, 2024</div>
+                                    </div>
+                                    <button class="bg-forest-green text-white px-4 py-2 rounded text-sm hover:bg-green-600">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-semibold text-gray-800">Q2 2024 Earnings</div>
+                                        <div class="text-sm text-gray-600">Published: July 24, 2024</div>
+                                    </div>
+                                    <button class="bg-forest-green text-white px-4 py-2 rounded text-sm hover:bg-green-600">Download PDF</button>
+                                </div>
+                            </div>
+                            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-semibold text-gray-800">Q1 2024 Earnings</div>
+                                        <div class="text-sm text-gray-600">Published: April 23, 2024</div>
+                                    </div>
+                                    <button class="bg-forest-green text-white px-4 py-2 rounded text-sm hover:bg-green-600">Download PDF</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Statutory Documents</h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="font-semibold text-gray-800 mb-3">SEC Filings</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="#" class="text-royal-blue hover:underline">Form 10-K (Annual)</a></li>
+                                <li><a href="#" class="text-royal-blue hover:underline">Form 10-Q (Quarterly)</a></li>
+                                <li><a href="#" class="text-royal-blue hover:underline">Form 8-K (Current)</a></li>
+                                <li><a href="#" class="text-royal-blue hover:underline">Proxy Statement</a></li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="font-semibold text-gray-800 mb-3">Corporate Governance</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="#" class="text-royal-blue hover:underline">Board Charter</a></li>
+                                <li><a href="#" class="text-royal-blue hover:underline">Code of Conduct</a></li>
+                                <li><a href="#" class="text-royal-blue hover:underline">Audit Committee Charter</a></li>
+                                <li><a href="#" class="text-royal-blue hover:underline">Compensation Policy</a></li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="font-semibold text-gray-800 mb-3">Other Documents</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="#" class="text-royal-blue hover:underline">Articles of Incorporation</a></li>
+                                <li><a href="#" class="text-royal-blue hover:underline">Bylaws</a></li>
+                                <li><a href="#" class="text-royal-blue hover:underline">Stock Plan Documents</a></li>
+                                <li><a href="#" class="text-royal-blue hover:underline">Credit Agreements</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sustainability Overview Page -->
+    <div id="sustainability-overview" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Sustainability Overview</h1>
+                    <p class="text-xl text-gray-600">Building a sustainable future through responsible business practices</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="text-center card-hover bg-forest-green text-white p-8 rounded-lg">
+                        <div class="text-4xl mb-4">🌱</div>
+                        <div class="text-2xl font-bold mb-2">Carbon Neutral</div>
+                        <p class="text-sm opacity-90">Since 2022</p>
+                    </div>
+                    <div class="text-center card-hover bg-royal-blue text-white p-8 rounded-lg">
+                        <div class="text-4xl mb-4">♻️</div>
+                        <div class="text-2xl font-bold mb-2">85%</div>
+                        <p class="text-sm opacity-90">Waste Reduction</p>
+                    </div>
+                    <div class="text-center card-hover bg-golden-yellow text-white p-8 rounded-lg">
+                        <div class="text-4xl mb-4">⚡</div>
+                        <div class="text-2xl font-bold mb-2">100%</div>
+                        <p class="text-sm opacity-90">Renewable Energy</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Commitment</h2>
+                        <p class="text-gray-600 mb-6">At Elite Consulting, we believe that sustainable business practices are not just good for the planet – they're essential for long-term success. Our comprehensive sustainability program addresses environmental, social, and governance (ESG) factors across all aspects of our operations.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <span class="w-6 h-6 bg-forest-green rounded-full flex items-center justify-center text-white text-sm">🌍</span>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Environmental Stewardship</h4>
+                                    <p class="text-sm text-gray-600">Reducing our carbon footprint and promoting sustainable practices</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="w-6 h-6 bg-royal-blue rounded-full flex items-center justify-center text-white text-sm">👥</span>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Social Responsibility</h4>
+                                    <p class="text-sm text-gray-600">Supporting communities and promoting diversity and inclusion</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="w-6 h-6 bg-golden-yellow rounded-full flex items-center justify-center text-white text-sm">⚖️</span>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Ethical Governance</h4>
+                                    <p class="text-sm text-gray-600">Maintaining the highest standards of business ethics and transparency</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6">2024 Achievements</h2>
+                        <div class="space-y-6">
+                            <div class="bg-gray-50 p-6 rounded-lg">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold text-gray-800">Carbon Emissions Reduction</span>
+                                    <span class="text-forest-green font-bold">-45%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-forest-green h-2 rounded-full" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-6 rounded-lg">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold text-gray-800">Renewable Energy Usage</span>
+                                    <span class="text-royal-blue font-bold">100%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-royal-blue h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-6 rounded-lg">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold text-gray-800">Diversity in Leadership</span>
+                                    <span class="text-golden-yellow font-bold">60%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-golden-yellow h-2 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sustainability Philosophy Page -->
+    <div id="sustainability-philosophy" class="page">
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Our Sustainability Philosophy</h1>
+                    <p class="text-xl text-gray-600">Guiding principles that drive our commitment to sustainable business practices</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Core Principles</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-forest-green rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white text-3xl">🌱</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">Environmental Excellence</h3>
+                            <p class="text-gray-600">We strive to minimize our environmental impact through innovative solutions and responsible resource management.</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-royal-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white text-3xl">🤝</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">Social Impact</h3>
+                            <p class="text-gray-600">We believe in creating positive change in the communities where we operate and serve.</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-golden-yellow rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white text-3xl">⚖️</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">Ethical Leadership</h3>
+                            <p class="text-gray-600">We maintain the highest standards of integrity and transparency in all our business practices.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Our Approach</h2>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-lg shadow-sm">
+                                <h3 class="font-semibold text-gray-800 mb-3">Integrated Strategy</h3>
+                                <p class="text-gray-600 text-sm">Sustainability is woven into every aspect of our business strategy, from client services to internal operations.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-sm">
+                                <h3 class="font-semibold text-gray-800 mb-3">Stakeholder Engagement</h3>
+                                <p class="text-gray-600 text-sm">We actively engage with clients, employees, and communities to understand and address sustainability challenges.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-sm">
+                                <h3 class="font-semibold text-gray-800 mb-3">Continuous Improvement</h3>
+                                <p class="text-gray-600 text-sm">We regularly assess and improve our sustainability practices through measurement, reporting, and innovation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Focus Areas</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm">
+                                <div class="w-12 h-12 bg-forest-green rounded-lg flex items-center justify-center">
+                                    <span class="text-white">🌍</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Climate Action</h4>
+                                    <p class="text-sm text-gray-600">Carbon neutrality and renewable energy adoption</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm">
+                                <div class="w-12 h-12 bg-royal-blue rounded-lg flex items-center justify-center">
+                                    <span class="text-white">💧</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Resource Conservation</h4>
+                                    <p class="text-sm text-gray-600">Efficient use of water, energy, and materials</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm">
+                                <div class="w-12 h-12 bg-golden-yellow rounded-lg flex items-center justify-center">
+                                    <span class="text-white">👥</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Diversity & Inclusion</h4>
+                                    <p class="text-sm text-gray-600">Building an inclusive and equitable workplace</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm">
+                                <div class="w-12 h-12 bg-forest-green rounded-lg flex items-center justify-center">
+                                    <span class="text-white">🎓</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Community Development</h4>
+                                    <p class="text-sm text-gray-600">Supporting education and local economic growth</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sustainability Reports Page -->
+    <div id="sustainability-reports" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Sustainability Reports</h1>
+                    <p class="text-xl text-gray-600">Transparent reporting on our environmental, social, and governance performance</p>
+                </div>
+
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">2024 Sustainability Metrics</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full bg-white border border-gray-200 rounded-lg">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">Category</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">Metric</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">2024 Target</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">Current Status</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-800">Progress</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium text-gray-800">Environmental</td>
+                                    <td class="py-3 px-4 text-gray-600">Carbon Emissions (tCO2e)</td>
+                                    <td class="py-3 px-4 text-gray-600">Net Zero</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">Achieved</td>
+                                    <td class="py-3 px-4 text-forest-green">✓ Complete</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium text-gray-800">Environmental</td>
+                                    <td class="py-3 px-4 text-gray-600">Renewable Energy %</td>
+                                    <td class="py-3 px-4 text-gray-600">100%</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">100%</td>
+                                    <td class="py-3 px-4 text-forest-green">✓ Complete</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium text-gray-800">Environmental</td>
+                                    <td class="py-3 px-4 text-gray-600">Waste Reduction %</td>
+                                    <td class="py-3 px-4 text-gray-600">80%</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">85%</td>
+                                    <td class="py-3 px-4 text-forest-green">✓ Exceeded</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium text-gray-800">Social</td>
+                                    <td class="py-3 px-4 text-gray-600">Gender Diversity %</td>
+                                    <td class="py-3 px-4 text-gray-600">50%</td>
+                                    <td class="py-3 px-4 text-royal-blue font-semibold">48%</td>
+                                    <td class="py-3 px-4 text-golden-yellow">⚠ In Progress</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium text-gray-800">Social</td>
+                                    <td class="py-3 px-4 text-gray-600">Employee Satisfaction</td>
+                                    <td class="py-3 px-4 text-gray-600">90%</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">94%</td>
+                                    <td class="py-3 px-4 text-forest-green">✓ Exceeded</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium text-gray-800">Governance</td>
+                                    <td class="py-3 px-4 text-gray-600">Board Independence %</td>
+                                    <td class="py-3 px-4 text-gray-600">75%</td>
+                                    <td class="py-3 px-4 text-forest-green font-semibold">80%</td>
+                                    <td class="py-3 px-4 text-forest-green">✓ Exceeded</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Annual Sustainability Reports</h2>
+                        <div class="space-y-4">
+                            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition duration-200">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-gray-800 mb-2">2023 Sustainability Report</h3>
+                                        <p class="text-sm text-gray-600 mb-3">Comprehensive review of our environmental, social, and governance performance for 2023.</p>
+                                        <div class="text-xs text-gray-500">Published: April 2024 • 64 pages</div>
+                                    </div>
+                                    <button class="bg-forest-green text-white px-4 py-2 rounded text-sm hover:bg-green-600 ml-4">Download</button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition duration-200">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-gray-800 mb-2">2022 Sustainability Report</h3>
+                                        <p class="text-sm text-gray-600 mb-3">Our journey towards carbon neutrality and enhanced social responsibility initiatives.</p>
+                                        <div class="text-xs text-gray-500">Published: March 2023 • 58 pages</div>
+                                    </div>
+                                    <button class="bg-forest-green text-white px-4 py-2 rounded text-sm hover:bg-green-600 ml-4">Download</button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition duration-200">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-gray-800 mb-2">2021 Sustainability Report</h3>
+                                        <p class="text-sm text-gray-600 mb-3">Foundation year for our comprehensive sustainability strategy and commitments.</p>
+                                        <div class="text-xs text-gray-500">Published: April 2022 • 52 pages</div>
+                                    </div>
+                                    <button class="bg-forest-green text-white px-4 py-2 rounded text-sm hover:bg-green-600 ml-4">Download</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">ESG Data & Certifications</h2>
+                        
+                        <div class="mb-8">
+                            <h3 class="font-semibold text-gray-800 mb-4">Third-Party Certifications</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-3 bg-gray-50 p-3 rounded-lg">
+                                    <span class="w-8 h-8 bg-forest-green rounded-full flex items-center justify-center text-white text-sm">🏆</span>
+                                    <div>
+                                        <div class="font-medium text-gray-800">B Corp Certified</div>
+                                        <div class="text-xs text-gray-600">Score: 89.2 (Renewed 2024)</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3 bg-gray-50 p-3 rounded-lg">
+                                    <span class="w-8 h-8 bg-royal-blue rounded-full flex items-center justify-center text-white text-sm">🌟</span>
+                                    <div>
+                                        <div class="font-medium text-gray-800">ISO 14001 Environmental</div>
+                                        <div class="text-xs text-gray-600">Certified since 2022</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3 bg-gray-50 p-3 rounded-lg">
+                                    <span class="w-8 h-8 bg-golden-yellow rounded-full flex items-center justify-center text-white text-sm">⭐</span>
+                                    <div>
+                                        <div class="font-medium text-gray-800">Great Place to Work</div>
+                                        <div class="text-xs text-gray-600">Certified 2024</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-4">ESG Ratings</h3>
+                            <div class="space-y-4">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-medium text-gray-800">MSCI ESG Rating</span>
+                                        <span class="bg-forest-green text-white px-3 py-1 rounded text-sm font-semibold">AA</span>
+                                    </div>
+                                    <div class="text-xs text-gray-600">Leader in Environmental and Social practices</div>
+                                </div>
+                                
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-medium text-gray-800">Sustainalytics ESG Risk</span>
+                                        <span class="bg-royal-blue text-white px-3 py-1 rounded text-sm font-semibold">Low Risk</span>
+                                    </div>
+                                    <div class="text-xs text-gray-600">Score: 12.4 (Industry Average: 28.1)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <section class="pt-24 pb-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Contact Us</h1>
+                    <p class="text-xl text-gray-600">Ready to transform your business? Let's start the conversation.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Get in Touch</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-royal-blue rounded-lg flex items-center justify-center">
+                                    <span class="text-white text-xl">📍</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">Office Location</h3>
+                                    <p class="text-gray-600">123 Business District<br>New York, NY 10001<br>United States</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-forest-green rounded-lg flex items-center justify-center">
+                                    <span class="text-white text-xl">📞</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">Phone</h3>
+                                    <p class="text-gray-600">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-golden-yellow rounded-lg flex items-center justify-center">
+                                    <span class="text-white text-xl">✉️</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">Email</h3>
+                                    <p class="text-gray-600">info@eliteconsulting.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-royal-blue rounded-lg flex items-center justify-center">
+                                    <span class="text-white text-xl">🕒</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">Business Hours</h3>
+                                    <p class="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 2:00 PM<br>Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h2>
+                        <form class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-royal-blue focus:border-transparent" placeholder="John">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-royal-blue focus:border-transparent" placeholder="Doe">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-royal-blue focus:border-transparent" placeholder="john@company.com">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-royal-blue focus:border-transparent" placeholder="Your Company">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
+                                <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-royal-blue focus:border-transparent">
+                                    <option>Select a service</option>
+                                    <option>Strategic Planning</option>
+                                    <option>Operations Optimization</option>
+                                    <option>Change Management</option>
+                                    <option>Financial Advisory</option>
+                                    <option>Digital Transformation</option>
+                                    <option>Leadership Development</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-royal-blue focus:border-transparent" placeholder="Tell us about your project or questions..."></textarea>
+                            </div>
+
+                            <button type="
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'963a0defd2e684ef',t:'MTc1MzI2MTkyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
